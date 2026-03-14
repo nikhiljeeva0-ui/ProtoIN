@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ProtIN — Real Indian Protein. No Chemicals. D2C Store.</title>
+<meta name="description" content="Fresh Indian protein snacks — Laddoos, Millet Bars, Snack Mix & Peanut Butter. Made fresh, shipped direct. No middlemen."/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav>
+  <div class="logo" onclick="showPage('home')">Prot<span>IN</span></div>
+  <div class="nav-links">
+    <button class="nl on" onclick="showPage('home')">Home</button>
+    <button class="nl" onclick="showPage('shop')">Shop</button>
+    <button class="nl" onclick="showPage('bundle')">Build Box</button>
+    <button class="nl" onclick="showPage('calculator')">Protein Quiz</button>
+  </div>
+  <div class="nav-right">
+    <button class="cart-icon" onclick="showPage('cart')">🛒 Cart <span id="cc">0</span></button>
+    <button class="nav-cta" onclick="showPage('shop')">Shop Now</button>
+  </div>
+</nav>
+
+<!-- ===================== HOME PAGE ===================== -->
+<div id="home-page" class="page on">
+
+  <div class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-tag">100% Desi · Zero Chemicals </div>
+        <h1>Real Indian<br/><em>Protein.</em><br/></h1>
+        <p>Protein Laddoos, Millet Bars, Snack Mix & Peanut Butter — made fresh in small batches and shipped directly to your door.</p>
+        <div class="hero-btns">
+          <button class="btn-hero" onclick="showPage('shop')">Shop Now</button>
+          <button class="btn-ghost" onclick="showPage('calculator')">Find My Protein Need</button>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-product-card" onclick="showPage('shop')">
+          <div class="hpc-icon" style="background:#FEF3E2">🫓</div>
+          <div><div class="hpc-name">Protein Laddoo (6 pack)</div><div class="hpc-sub">10g protein · Jaggery · Chana · Almonds</div></div>
+          <div class="hpc-price">₹199</div>
+        </div>
+        <div class="hero-product-card" onclick="showPage('shop')">
+          <div class="hpc-icon" style="background:#EBF5E1">🌾</div>
+          <div><div class="hpc-name">Millet Energy Bar</div><div class="hpc-sub">12g protein · Ragi · Peanuts · Jaggery</div></div>
+          <div class="hpc-price">₹89</div>
+        </div>
+        <div class="hero-product-card" onclick="showPage('shop')">
+          <div class="hpc-icon" style="background:#FBF4E8">🥜</div>
+          <div><div class="hpc-name">Roasted Snack Mix (200g)</div><div class="hpc-sub">17g protein · Chana · Peanuts · Soy</div></div>
+          <div class="hpc-price">₹149</div>
+        </div>
+        <div class="hero-product-card" onclick="showPage('shop')">
+          <div class="hpc-icon" style="background:#FEF3E2">🥄</div>
+          <div><div class="hpc-name">Desi Peanut Butter (250g)</div><div class="hpc-sub">25g protein · Pure peanuts · Jaggery</div></div>
+          <div class="hpc-price">₹249</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-strip">
+    <div class="stats-inner">
+      <div class="stat-item"><div class="stat-n">60%</div><div class="stat-l">Indians are protein deficient</div></div>
+      <div class="stat-item"><div class="stat-n">0%</div><div class="stat-l">Preservatives in our products</div></div>
+      <div class="stat-item"><div class="stat-n">40%</div><div class="stat-l">Cheaper than retail protein bars</div></div>
+      <div class="stat-item"><div class="stat-n">100%</div><div class="stat-l">Direct from our kitchen to you</div></div>
+    </div>
+  </div>
+
+  <!-- PROBLEM -->
+  <div style="background:var(--cream2)">
+    <div class="section">
+      <div class="sec-label">The Problem</div>
+      <div class="sec-title">Why India needs<br/>ProtIN</div>
+      <div class="prob-grid">
+        <div class="prob-card">
+          <div class="prob-big">60%</div>
+          <div class="prob-title">Indians are protein deficient</div>
+          <div class="prob-desc">Most Indians eat carb-heavy diets — rice, roti, bread. Daily protein intake is far below the recommended 0.8g per kg body weight.</div>
+        </div>
+        <div class="prob-card">
+          <div class="prob-big">$38B</div>
+          <div class="prob-title">Ultra-processed protein market</div>
+          <div class="prob-desc">Imported whey, branded protein bars — all ultra-processed, full of chemicals, and linked to rising obesity and diabetes in India.</div>
+        </div>
+        <div class="prob-card">
+          <div class="prob-big">40%</div>
+          <div class="prob-title">Retail markup kills affordability</div>
+          <div class="prob-desc">By the time protein food reaches your store, distributor + wholesaler + retailer have added 40% markup.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="hiw-bg">
+    <div class="section">
+      <div class="sec-label">How It Works</div>
+      <div class="sec-title">Your kitchen → our kitchen<br/>→ your door</div>
+      <div class="flow-viz">
+        <div class="flow-node"><div class="fn-icon">🛒</div><div class="fn-title">You order</div><div class="fn-sub">Pick your protein products on our website</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node"><div class="fn-icon">👩‍🍳</div><div class="fn-title">We make fresh</div><div class="fn-sub">Small batch production — same day or next day</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node"><div class="fn-icon">📦</div><div class="fn-title">We pack & ship</div><div class="fn-sub">Dispatched within 24hrs via courier pan India</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node"><div class="fn-icon">🏠</div><div class="fn-title">Fresh to your door</div><div class="fn-sub">No middlemen. No markup. Direct from us.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FARMER STORIES / INGREDIENT SOURCE -->
+  <div style="background:#fff">
+    <div class="section">
+      <div class="sec-label">Ingredient Origins</div>
+      <div class="sec-title">Where our ingredients come from</div>
+      <div class="sec-sub">Every ingredient is sourced directly from Indian farmers. No imports, no shortcuts.</div>
+      <div class="farmer-grid">
+        <div class="farmer-card">
+          <div class="farmer-emoji">🌾</div>
+          <div class="farmer-ingredient">Ragi (Finger Millet)</div>
+          <div class="farmer-loc">Sourced from farmers in Karnataka</div>
+          <div class="farmer-desc">Ancient grain, naturally rich in calcium and protein. Used in our Millet Energy Bars.</div>
+        </div>
+        <div class="farmer-card">
+          <div class="farmer-emoji">🥜</div>
+          <div class="farmer-ingredient">Peanuts</div>
+          <div class="farmer-loc">Sourced from farms in Gujarat</div>
+          <div class="farmer-desc">Premium quality roasted peanuts — the backbone of our snacks and peanut butter.</div>
+        </div>
+        <div class="farmer-card">
+          <div class="farmer-emoji">🍯</div>
+          <div class="farmer-ingredient">Jaggery</div>
+          <div class="farmer-loc">Sourced from sugarcane farms in Maharashtra</div>
+          <div class="farmer-desc">Natural sweetener, unrefined and mineral-rich. Replaces refined sugar in every product.</div>
+        </div>
+        <div class="farmer-card">
+          <div class="farmer-emoji">🫘</div>
+          <div class="farmer-ingredient">Sattu (Roasted Gram)</div>
+          <div class="farmer-loc">Sourced from Bihar</div>
+          <div class="farmer-desc">India's original protein powder — used for centuries. Key ingredient in our Protein Laddoos.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div style="background:var(--cream2)">
+    <div class="section">
+      <div class="sec-label">Happy Customers</div>
+      <div class="sec-title">What India is saying</div>
+      <div class="test-grid">
+        <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">"The protein laddoos taste exactly like what my nani used to make — but now I know the exact protein content. Ordering every month!"</div><div class="test-author"><div class="test-avatar">PK</div><div><div class="test-name">Priya K.</div><div class="test-loc">Bengaluru · Gym trainer</div></div></div></div>
+        <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">"I was spending ₹500 on imported protein bars. ProtIN gives me more protein for ₹149. And it actually tastes good."</div><div class="test-author"><div class="test-avatar">RS</div><div><div class="test-name">Rahul S.</div><div class="test-loc">Mumbai · Software engineer</div></div></div></div>
+        <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">"Finally a protein snack my parents also eat! The millet bar is perfect — not too sweet, not too bland. The whole family is hooked."</div><div class="test-author"><div class="test-avatar">AN</div><div><div class="test-name">Ananya N.</div><div class="test-loc">Delhi · College student</div></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo">Prot<span>IN</span></span>
+        <p>Real Indian protein. No chemicals. No middlemen. Made fresh, shipped direct, pan India.</p>
+      </div>
+      <div class="footer-col"><h4>Products</h4><a onclick="showPage('shop')">Protein Laddoo</a><a onclick="showPage('shop')">Millet Energy Bar</a><a onclick="showPage('shop')">Snack Mix</a><a onclick="showPage('shop')">Peanut Butter</a></div>
+      <div class="footer-col"><h4>Features</h4><a onclick="showPage('calculator')">Protein Calculator</a><a onclick="showPage('bundle')">Build Your Box</a><a onclick="showPage('bundle')">21-Day Challenge</a><a onclick="showPage('bundle')">Loyalty Rewards</a></div>
+      <div class="footer-col"><h4>Support</h4><a>Shipping Info</a><a>Returns</a><a>Contact Us</a><a>WhatsApp</a></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="fc">© 2026 ProtIN. Made with ❤ in India.</div>
+      <div class="fc">Real Indian Protein. No Chemicals. No Middlemen.</div>
+    </div>
+  </footer>
+</div>
+
+<!-- ===================== SHOP PAGE ===================== -->
+<div id="shop-page" class="page">
+  <div class="products-bg">
+    <div class="section">
+      <div class="sec-label">Our Products</div>
+      <div class="sec-title">Fresh protein, made to order</div>
+      <div class="sec-sub">Every product made in small batches after you order. Click "View Ingredients" on any product for full transparency.</div>
+      <div class="prod-grid" id="prod-grid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== BUNDLE / CHALLENGE / LOYALTY PAGE ===================== -->
+<div id="bundle-page" class="page">
+  <!-- BUNDLE BUILDER -->
+  <div class="bundle-bg">
+    <div class="section">
+      <div class="sec-label">Build Your Box</div>
+      <div class="sec-title">Build Your Protein Box</div>
+      <div class="sec-sub">Pick products, set quantities, and add your custom box to cart in one click.</div>
+      <div class="bundle-layout">
+        <div class="bundle-items" id="bundle-grid"></div>
+        <div class="bundle-summary-box" id="bundle-summary"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 21-DAY CHALLENGE -->
+  <div style="background:var(--cream2)">
+    <div class="section">
+      <div class="sec-label">Gamification</div>
+      <div class="sec-title">21-Day Protein Challenge</div>
+      <div class="sec-sub">Track your daily protein for 21 days. Complete it and earn a ₹100 discount coupon.</div>
+      <div class="challenge-box" id="challenge-content"></div>
+    </div>
+  </div>
+
+  <!-- LOYALTY -->
+  <div style="background:#fff">
+    <div class="section">
+      <div class="sec-label">Rewards</div>
+      <div class="sec-title">Loyalty Rewards</div>
+      <div class="sec-sub">Earn points with every order. Redeem them for discounts on future purchases.</div>
+      <div class="loyalty-box" id="loyalty-display"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== CALCULATOR PAGE ===================== -->
+<div id="calculator-page" class="page">
+  <div class="calc-bg">
+    <div class="section">
+      <div class="sec-label">Protein Quiz</div>
+      <div class="sec-title">How much protein<br/>do you need daily?</div>
+      <div class="calc-box">
+        <div class="calc-title">Find your daily protein goal</div>
+        <div class="calc-sub">Enter your details and we'll tell you exactly how much protein you need — and recommend the perfect ProtIN combo.</div>
+        <div class="calc-row">
+          <div class="cf"><label>Your weight (kg)</label><input type="number" id="weight" placeholder="e.g. 65"/></div>
+          <div class="cf"><label>Activity level</label><select id="activity"><option value="1.2">Sedentary (desk job)</option><option value="1.5">Lightly active</option><option value="1.8">Moderately active</option><option value="2.0">Very active / gym</option></select></div>
+        </div>
+        <div class="calc-row">
+          <div class="cf"><label>Goal</label><select id="goal"><option value="0.8">Maintain health</option><option value="1.2">Build muscle</option><option value="1.6">Serious athlete</option></select></div>
+          <div class="cf"><label>Current diet</label><select id="diet"><option value="low">Mostly carbs (rice/roti)</option><option value="mid">Mixed diet</option><option value="high">High protein diet</option></select></div>
+        </div>
+        <button class="calc-btn" onclick="calcProtein()">Calculate my protein need</button>
+        <div class="calc-result" id="calc-result">
+          <div class="cr-label">You need approximately</div>
+          <div class="cr-need" id="cr-val">0g</div>
+          <div class="cr-label">of protein per day</div>
+          <div class="cr-products" id="cr-products"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== CART PAGE ===================== -->
+<div id="cart-page" class="page">
+  <div class="cart-wrap">
+    <div class="cart-title">Your Cart</div>
+    <div class="cart-layout">
+      <div class="cart-panel" id="cart-items-box"></div>
+      <div class="order-summary" id="order-summary"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal" id="modal-content"></div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
