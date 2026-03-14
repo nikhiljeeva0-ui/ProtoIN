@@ -1,20 +1,20 @@
 /* ═══════════════════════════════════════════════════════════
-   ProtIN — D2C Store Engine v2.0
+   ProtoIN — D2C Store Engine v3.0
    ═══════════════════════════════════════════════════════════ */
 
 const products=[
-  {id:1,name:'Protein Laddoo',sub:'6 pack · Sattu · Peanut · Jaggery · Almonds',desc:'Traditional Indian laddoo reinvented with high protein ingredients. No sugar, no preservatives.',price:199,mrp:320,protein:10,icon:'🫓',bg:'#FEF3E2',badge:'Bestseller',unit:'per laddoo',
+  {id:1,name:'Protein Laddoo',sub:'6 pack · Sattu · Peanut · Jaggery',desc:'Traditional Indian laddoo reinvented with high protein ingredients. No sugar, no preservatives.',price:199,mrp:320,protein:10,img:'img-laddoo.png',bg:'#F8F9FA',badge:'Sale!',unit:'per laddoo',
    ingredients:['Sattu (roasted gram flour)','Peanuts','Jaggery','Almonds','Ghee','Cardamom'],
-   source:'Sattu from Bihar, Peanuts from Gujarat, Jaggery from Maharashtra'},
-  {id:2,name:'Millet Energy Bar',sub:'Single bar · Ragi · Jowar · Peanuts · Seeds',desc:'Made with ancient Indian grains. Perfect pre-workout or evening snack.',price:89,mrp:140,protein:12,icon:'🌾',bg:'#EBF5E1',badge:'Trending',unit:'per bar',
+   source:'Sattu from Bihar, Peanuts from Gujarat, Jaggery from Maharashtra',cat:'snacks'},
+  {id:2,name:'Millet Energy Bar',sub:'Single bar · Ragi · Jowar · Peanuts',desc:'Made with ancient Indian grains. Perfect pre-workout or evening snack.',price:89,mrp:140,protein:12,img:'img-bar.png',bg:'#F8F9FA',badge:'Sale!',unit:'per bar',
    ingredients:['Ragi (finger millet)','Jowar (sorghum)','Peanuts','Pumpkin seeds','Jaggery','Flaxseeds'],
-   source:'Ragi from Karnataka, Jowar from Rajasthan'},
-  {id:3,name:'Roasted Snack Mix',sub:'200g · Chana · Peanuts · Soy Nuts · Spices',desc:'Highest protein snack in our range. Zero cooking, just roasted goodness.',price:149,mrp:230,protein:17,icon:'🥜',bg:'#FBF4E8',badge:'High Protein',unit:'per serving',
+   source:'Ragi from Karnataka, Jowar from Rajasthan',cat:'bars'},
+  {id:3,name:'Roasted Snack Mix',sub:'200g · Chana · Peanuts · Soy Nuts',desc:'Highest protein snack in our range. Zero cooking, just roasted goodness.',price:149,mrp:230,protein:17,img:'img-snack.png',bg:'#F8F9FA',badge:'Sale!',unit:'per serving',
    ingredients:['Roasted chana','Peanuts','Soy nuts','Black pepper','Rock salt','Turmeric'],
-   source:'Chana from MP, Peanuts from Gujarat'},
-  {id:4,name:'Desi Peanut Butter',sub:'250g · Pure Peanuts · Jaggery · No additives',desc:'No palm oil. No emulsifiers. Just crushed peanuts with jaggery powder.',price:249,mrp:380,protein:25,icon:'🥄',bg:'#FEF3E2',badge:'25g Protein',unit:'per 100g',
+   source:'Chana from MP, Peanuts from Gujarat',cat:'snacks'},
+  {id:4,name:'Desi Peanut Butter',sub:'250g · Pure Peanuts · Jaggery',desc:'No palm oil. No emulsifiers. Just crushed peanuts with jaggery powder.',price:249,mrp:380,protein:25,img:'img-pb.png',bg:'#F8F9FA',badge:'Sale!',unit:'per 100g',
    ingredients:['Roasted peanuts (95%)','Jaggery powder (5%)','No palm oil','No emulsifiers'],
-   source:'Peanuts from Gujarat, Jaggery from Maharashtra'},
+   source:'Peanuts from Gujarat, Jaggery from Maharashtra',cat:'spreads'},
 ];
 
 let cart={};
@@ -32,30 +32,46 @@ function renderShop(){
     const barW=Math.min(100,p.protein*3.5);
     const inCart=cart[p.id]>0;
     return`<div class="pcard">
-      <div class="pcard-img" style="background:${p.bg}">
-        <span style="font-size:54px">${p.icon}</span>
-        <div class="pcard-badge">${p.badge}</div>
+      <div class="pcard-img">
+        <img src="${p.img}" alt="${p.name}">
+        <div class="pcard-badge">Sale!</div>
         <div class="pcard-badge2">${sv}% off</div>
       </div>
       <div class="pcard-body">
         <div class="pcard-name">${p.name}</div>
+        <div class="pcard-stars">★★★★★</div>
         <div class="pcard-desc">${p.sub}</div>
-        <div class="pcard-desc" style="margin-bottom:10px">${p.desc}</div>
+        <div class="pcard-desc" style="margin-bottom:8px">${p.desc}</div>
         <button class="ingr-btn" onclick="showIngredients(${p.id})">View Ingredients ↗</button>
         <div class="protein-track">
-          <div class="pt-label"><span class="pt-text">Protein content</span><span class="pt-val">${p.protein}g ${p.unit}</span></div>
+          <div class="pt-label"><span class="pt-text">Protein</span><span class="pt-val">${p.protein}g ${p.unit}</span></div>
           <div class="pt-bar"><div class="pt-fill" style="width:${barW}%"></div></div>
         </div>
         <div class="pcard-foot">
           <div>
-            <div class="pcard-price">₹${p.price}</div>
             <div class="pcard-mrp">MRP ₹${p.mrp}</div>
+            <div class="pcard-price">From: ₹${p.price}</div>
           </div>
-          <button class="add-btn ${inCart?'added':''}" onclick="addCart(${p.id})">${inCart?'✓ Added':'Add to cart'}</button>
+          <button class="add-btn ${inCart?'added':''}" onclick="addCart(${p.id})">${inCart?'✓ Added':'Add to Cart'}</button>
         </div>
       </div>
     </div>`;
   }).join('');
+}
+
+function filterProducts(q){
+  const cards=document.querySelectorAll('.pcard');
+  const query=q.toLowerCase();
+  cards.forEach((card,i)=>{
+    const name=products[i].name.toLowerCase();
+    card.style.display=name.includes(query)?'':'none';
+  });
+}
+
+function filterCategory(cat){
+  document.querySelectorAll('.cat-list li').forEach(li=>li.classList.remove('active'));
+  event.target.classList.add('active');
+  renderShop();// all categories show all products in this demo
 }
 
 /* ═══════════════ CART ═══════════════ */
@@ -289,7 +305,7 @@ function orderWhatsApp(){
   if(!entries.length)return showToast('Cart is empty!');
   const sub=entries.reduce((s,[id,q])=>s+products.find(p=>p.id==id).price*q,0);
   const lines=entries.map(([id,q])=>{const p=products.find(x=>x.id==id);return`${q}× ${p.name} — ₹${p.price*q}`;}).join('%0A');
-  const msg=`Hi! I'd like to order from ProtIN:%0A%0A${lines}%0A%0ATotal: ₹${sub}%0A%0APlease confirm my order!`;
+  const msg=`Hi! I'd like to order from ProtoIN:%0A%0A${lines}%0A%0ATotal: ₹${sub}%0A%0APlease confirm my order!`;
   window.open(`https://wa.me/919999999999?text=${msg}`,'_blank');
 }
 
@@ -346,7 +362,7 @@ function showModal(type){
     localStorage.setItem('dp_loyalty',loyaltyPoints);
     mc.innerHTML=`<div class="modal-emoji">🎉</div>
       <div class="modal-title">Order Placed!</div>
-      <div class="modal-sub">Your fresh ProtIN is being made right now! Dispatched within 24 hours. You'll get a WhatsApp update.</div>
+      <div class="modal-sub">Your fresh ProtoIN is being made right now! Dispatched within 24 hours. You'll get a WhatsApp update.</div>
       <div class="modal-loyalty">+${pts} loyalty points earned! 🏆</div>
       <button class="modal-btn" onclick="cart={};updCart();document.getElementById('modal').classList.remove('show');showPage('home')">Back to Home</button>`;
   }

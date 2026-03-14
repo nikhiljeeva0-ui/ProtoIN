@@ -3,16 +3,27 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>ProtIN — Real Indian Protein. No Chemicals. D2C Store.</title>
+<title>ProtoIN — Real Indian Protein. No Chemicals. D2C Store.</title>
 <meta name="description" content="Fresh Indian protein snacks — Laddoos, Millet Bars, Snack Mix & Peanut Butter. Made fresh, shipped direct. No middlemen."/>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<div class="top-bar">
+  <div class="top-bar-left">
+    <span>📞 +91 98765 43210</span>
+    <span>✉️ hello@protin.in</span>
+  </div>
+  <div class="top-bar-right">
+    <span>🚚 Free shipping above ₹499</span>
+    <a onclick="showPage('calculator')">Protein Quiz</a>
+  </div>
+</div>
+
 <nav>
-  <div class="logo" onclick="showPage('home')">Prot<span>IN</span></div>
+  <div class="logo" onclick="showPage('home')">Proto<span>IN</span></div>
   <div class="nav-links">
     <button class="nl on" onclick="showPage('home')">Home</button>
     <button class="nl" onclick="showPage('shop')">Shop</button>
@@ -77,7 +88,7 @@
   <div style="background:var(--cream2)">
     <div class="section">
       <div class="sec-label">The Problem</div>
-      <div class="sec-title">Why India needs<br/>ProtIN</div>
+      <div class="sec-title">Why India needs<br/>ProtoIN</div>
       <div class="prob-grid">
         <div class="prob-card">
           <div class="prob-big">60%</div>
@@ -157,7 +168,7 @@
       <div class="sec-title">What India is saying</div>
       <div class="test-grid">
         <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">"The protein laddoos taste exactly like what my nani used to make — but now I know the exact protein content. Ordering every month!"</div><div class="test-author"><div class="test-avatar">PK</div><div><div class="test-name">Priya K.</div><div class="test-loc">Bengaluru · Gym trainer</div></div></div></div>
-        <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">"I was spending ₹500 on imported protein bars. ProtIN gives me more protein for ₹149. And it actually tastes good."</div><div class="test-author"><div class="test-avatar">RS</div><div><div class="test-name">Rahul S.</div><div class="test-loc">Mumbai · Software engineer</div></div></div></div>
+        <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">"I was spending ₹500 on imported protein bars. ProtoIN gives me more protein for ₹149. And it actually tastes good."</div><div class="test-author"><div class="test-avatar">RS</div><div><div class="test-name">Rahul S.</div><div class="test-loc">Mumbai · Software engineer</div></div></div></div>
         <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">"Finally a protein snack my parents also eat! The millet bar is perfect — not too sweet, not too bland. The whole family is hooked."</div><div class="test-author"><div class="test-avatar">AN</div><div><div class="test-name">Ananya N.</div><div class="test-loc">Delhi · College student</div></div></div></div>
       </div>
     </div>
@@ -166,7 +177,7 @@
   <footer>
     <div class="footer-grid">
       <div class="footer-brand">
-        <span class="logo">Prot<span>IN</span></span>
+        <span class="logo">Proto<span>IN</span></span>
         <p>Real Indian protein. No chemicals. No middlemen. Made fresh, shipped direct, pan India.</p>
       </div>
       <div class="footer-col"><h4>Products</h4><a onclick="showPage('shop')">Protein Laddoo</a><a onclick="showPage('shop')">Millet Energy Bar</a><a onclick="showPage('shop')">Snack Mix</a><a onclick="showPage('shop')">Peanut Butter</a></div>
@@ -174,7 +185,7 @@
       <div class="footer-col"><h4>Support</h4><a>Shipping Info</a><a>Returns</a><a>Contact Us</a><a>WhatsApp</a></div>
     </div>
     <div class="footer-bottom">
-      <div class="fc">© 2026 ProtIN. Made with ❤ in India.</div>
+      <div class="fc">© 2026 ProtoIN. Made with ❤ in India.</div>
       <div class="fc">Real Indian Protein. No Chemicals. No Middlemen.</div>
     </div>
   </footer>
@@ -184,10 +195,63 @@
 <div id="shop-page" class="page">
   <div class="products-bg">
     <div class="section">
-      <div class="sec-label">Our Products</div>
-      <div class="sec-title">Fresh protein, made to order</div>
-      <div class="sec-sub">Every product made in small batches after you order. Click "View Ingredients" on any product for full transparency.</div>
-      <div class="prod-grid" id="prod-grid"></div>
+      <div class="sec-label">Shop</div>
+      <div class="sec-title">All Products</div>
+
+      <div class="shop-layout">
+        <!-- SIDEBAR -->
+        <aside class="shop-sidebar">
+          <div class="sidebar-widget">
+            <div class="sidebar-title">Search</div>
+            <input type="text" class="sidebar-search" placeholder="Search products..." oninput="filterProducts(this.value)">
+          </div>
+          <div class="sidebar-widget">
+            <div class="sidebar-title">Categories</div>
+            <ul class="cat-list">
+              <li class="active" onclick="filterCategory('all')">All Products <span class="cat-count">4</span></li>
+              <li onclick="filterCategory('snacks')">Snacks <span class="cat-count">2</span></li>
+              <li onclick="filterCategory('spreads')">Spreads <span class="cat-count">1</span></li>
+              <li onclick="filterCategory('bars')">Energy Bars <span class="cat-count">1</span></li>
+            </ul>
+          </div>
+          <div class="sidebar-widget">
+            <div class="sidebar-title">Price Filter</div>
+            <div class="price-filter">
+              <input type="range" class="price-range" min="0" max="500" value="500" oninput="document.getElementById('price-val').textContent='₹0 — ₹'+this.value">
+              <div class="price-val" id="price-val">₹0 — ₹500</div>
+            </div>
+          </div>
+          <div class="sidebar-widget">
+            <div class="sidebar-title">Product Tags</div>
+            <div class="tag-cloud">
+              <span class="tag active">Protein</span>
+              <span class="tag">Desi</span>
+              <span class="tag">No Sugar</span>
+              <span class="tag">Fresh</span>
+              <span class="tag">Organic</span>
+              <span class="tag">Vegan</span>
+            </div>
+          </div>
+        </aside>
+
+        <!-- MAIN GRID -->
+        <div>
+          <div class="shop-header">
+            <span class="shop-results">Showing all 4 results</span>
+            <div class="shop-sort">
+              <select>
+                <option>Default sorting</option>
+                <option>Sort by popularity</option>
+                <option>Sort by price: low to high</option>
+                <option>Sort by price: high to low</option>
+                <option>Sort by latest</option>
+              </select>
+            </div>
+          </div>
+          <div class="prod-grid" id="prod-grid"></div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -236,7 +300,7 @@
       <div class="sec-title">How much protein<br/>do you need daily?</div>
       <div class="calc-box">
         <div class="calc-title">Find your daily protein goal</div>
-        <div class="calc-sub">Enter your details and we'll tell you exactly how much protein you need — and recommend the perfect ProtIN combo.</div>
+        <div class="calc-sub">Enter your details and we'll tell you exactly how much protein you need — and recommend the perfect ProtoIN combo.</div>
         <div class="calc-row">
           <div class="cf"><label>Your weight (kg)</label><input type="number" id="weight" placeholder="e.g. 65"/></div>
           <div class="cf"><label>Activity level</label><select id="activity"><option value="1.2">Sedentary (desk job)</option><option value="1.5">Lightly active</option><option value="1.8">Moderately active</option><option value="2.0">Very active / gym</option></select></div>
