@@ -120,7 +120,7 @@ function renderCart(){
     entries.map(([id,q])=>{
       const p=products.find(x=>x.id==id);
       return`<div class="ci">
-        <div class="ci-thumb" style="background:${p.bg}"><span style="font-size:28px">${p.icon}</span></div>
+        <div class="ci-thumb" style="background:${p.bg}"><img src="${p.img}" style="width:100%;height:100%;object-fit:cover;border-radius:4px"></div>
         <div class="ci-info"><div class="ci-name">${p.name}</div><div class="ci-sub">${p.sub}</div></div>
         <div class="qty-ctrl"><button class="qb" onclick="chgQty(${id},-1)">−</button><div class="qn">${q}</div><button class="qb" onclick="chgQty(${id},1)">+</button></div>
         <div class="ci-price">₹${p.price*q}</div>
@@ -129,7 +129,7 @@ function renderCart(){
     (upsells.length?`<div class="upsell-section">
       <div class="upsell-title">Customers also buy</div>
       <div class="upsell-row">${upsells.slice(0,2).map(p=>`<div class="upsell-item">
-        <span class="upsell-icon">${p.icon}</span>
+        <img src="${p.img}" class="upsell-icon" style="width:24px;height:24px;object-fit:cover;border-radius:4px">
         <div class="upsell-info"><div class="upsell-name">${p.name}</div><div class="upsell-price">₹${p.price}</div></div>
         <button class="upsell-btn" onclick="addCart(${p.id});renderCart()">+ Add</button>
       </div>`).join('')}</div>
@@ -178,7 +178,7 @@ function calcProtein(){
 
   const recsHtml=recs.map(r=>{
     const p=products.find(x=>x.id===r.id);
-    return`<div class="rec-item"><span>${p.icon} ${r.qty}× ${p.name}</span><span class="rec-protein">${p.protein*r.qty}g protein</span></div>`;
+    return`<div class="rec-item"><span><img src="${p.img}" style="width:20px;height:20px;object-fit:cover;vertical-align:middle;margin-right:8px;border-radius:2px"> ${r.qty}× ${p.name}</span><span class="rec-protein">${p.protein*r.qty}g protein</span></div>`;
   }).join('');
 
   const comboPrice=recs.reduce((s,r)=>s+products.find(x=>x.id===r.id).price*r.qty,0);
@@ -209,7 +209,7 @@ function renderBundle(){
   grid.innerHTML=products.map(p=>{
     const qty=bundle[p.id]||0;
     return`<div class="bb-item">
-      <div class="bb-icon" style="background:${p.bg}">${p.icon}</div>
+      <div class="bb-icon" style="background:${p.bg}"><img src="${p.img}" style="width:100%;height:100%;object-fit:cover;border-radius:8px"></div>
       <div class="bb-info">
         <div class="bb-name">${p.name}</div>
         <div class="bb-price">₹${p.price}</div>
@@ -280,7 +280,7 @@ function showIngredients(id){
   const m=document.getElementById('modal');
   const mc=document.getElementById('modal-content');
   mc.innerHTML=`<div class="ingr-modal">
-    <div class="ingr-header"><span style="font-size:40px">${p.icon}</span><div class="ingr-title">${p.name}</div></div>
+    <div class="ingr-header"><img src="${p.img}" style="width:60px;height:60px;object-fit:cover;border-radius:8px"><div class="ingr-title">${p.name}</div></div>
     <div class="ingr-section">
       <div class="ingr-section-title">Ingredients</div>
       ${p.ingredients.map(i=>`<div class="ingr-row"><span class="ingr-check">✓</span>${i}</div>`).join('')}
